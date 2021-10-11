@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useLocalStorageState } from "../utils/localSotrage";
 
 // see manual here : https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
 export const ItemList = () => {
-  const [backlog, setBacklog] = useState([]); // standartwert is ein leeres Array []
-  const [toBuy, setToBuy] = useState([]);
+  const [backlog, setBacklog] = useLocalStorageState("backlog", []); // useState([]); default value is ein leeres Array []
+  const [toBuy, setToBuy] = useLocalStorageState("tobuy", []);
   useEffect(() => {
     const url = "https://fetch-me.vercel.app/shopping-list.json";
     const fetchData = async () => {
@@ -45,11 +46,11 @@ export const ItemList = () => {
         <h1>Sarah's Shopping List </h1>
         <h2>Backlog</h2>
         <div>
-          {backlog.map((item) => (
+          {backlog.map((item, index) => (
             <span
               className="backlog"
               onClick={(event) => handleClickBacklog(event, item)}
-              key={item.id}
+              key={`${item.id}_${index}`}
             >
               {" "}
               {item.name}{" "}
@@ -58,11 +59,11 @@ export const ItemList = () => {
         </div>
         <h2>To Buy</h2>
         <div>
-          {toBuy.map((item) => (
+          {toBuy.map((item, index) => (
             <span
               className="toBuy"
               onClick={(event) => handleClickToBuy(event, item)}
-              key={item.id}
+              key={`${item.id}_${index}`}
             >
               {" "}
               {item.name}{" "}

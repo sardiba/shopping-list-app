@@ -1,3 +1,6 @@
+div {
+  padding: 15px;
+}
 .backlog {
   display: inline-block;
   background-color: bisque;
@@ -16,4 +19,9 @@
 
 h1::after {
   content: "🛍";
+}
+
+span.backlog:hover,
+span.toBuy:hover {
+  cursor: grab;
 }
