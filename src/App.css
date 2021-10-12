@@ -1,22 +1,3 @@
-div {
-  padding: 15px;
-}
-.backlog {
-  display: inline-block;
-  background-color: bisque;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 12px;
-}
-
-.toBuy {
-  display: inline-block;
-  background-color: plum;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 12px;
-}
-
 h1::after {
   content: "🛍";
 }

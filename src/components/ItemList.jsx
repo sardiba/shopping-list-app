@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocalStorageState } from "../utils/localSotrage";
+import styled from "styled-components";
 
 // see manual here : https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
 export const ItemList = () => {
@@ -42,35 +43,51 @@ export const ItemList = () => {
   };
   return (
     <>
-      <div className="App">
+      <Div className="App">
         <h1>Sarah's Shopping List </h1>
         <h2>Backlog</h2>
         <div>
           {backlog.map((item, index) => (
-            <span
-              className="backlog"
+            <BacklogBox
               onClick={(event) => handleClickBacklog(event, item)}
               key={`${item.id}_${index}`}
             >
               {" "}
               {item.name}{" "}
-            </span>
+            </BacklogBox>
           ))}
         </div>
         <h2>To Buy</h2>
         <div>
           {toBuy.map((item, index) => (
-            <span
-              className="toBuy"
+            <ToBuyBox
+              // isActive={true}
               onClick={(event) => handleClickToBuy(event, item)}
               key={`${item.id}_${index}`}
             >
               {" "}
               {item.name}{" "}
-            </span>
+            </ToBuyBox>
           ))}
         </div>
-      </div>
+      </Div>
     </>
   );
 };
+
+const BacklogBox = styled.span`
+  display: inline-block;
+  background-color: bisque;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 12px;
+`;
+// background-color: ${({ isActive }) => (isActive ? "plum" : "bisque")};
+
+const ToBuyBox = styled(BacklogBox)`
+  background-color: plum;
+`;
+
+const Div = styled.div`
+  padding: 15px;
+`;
