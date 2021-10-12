@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocalStorageState } from "../utils/localSotrage";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // see manual here : https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
 export const ItemList = () => {
@@ -53,7 +53,8 @@ export const ItemList = () => {
               key={`${item.id}_${index}`}
             >
               {" "}
-              {item.name}{" "}
+              {item.name}
+              <div className="category"> {item.category} </div>
             </BacklogBox>
           ))}
         </div>
@@ -66,7 +67,8 @@ export const ItemList = () => {
               key={`${item.id}_${index}`}
             >
               {" "}
-              {item.name}{" "}
+              {item.name}
+              <div className="category"> {item.category} </div>
             </ToBuyBox>
           ))}
         </div>
@@ -75,16 +77,48 @@ export const ItemList = () => {
   );
 };
 
+const zoom1 = keyframes`
+0%{
+background-color: bisque;
+}
+50%{
+background-color: peru;
+transform: scale(1.2);
+}
+100%{
+  background-color: bisque;
+}`;
+
+const zoom2 = keyframes`
+0%{
+background-color: plum;
+}
+50%{
+background-color: orchid;
+transform: scale(1.2);
+}
+100%{
+  background-color: plum;
+}`;
+
 const BacklogBox = styled.span`
   display: inline-block;
   background-color: bisque;
   border-radius: 5px;
   padding: 10px;
   margin: 12px;
+  font-size: 17px;
+  text-align: center;
 
   &: hover {
-    background-color: brown;
-    color: white;
+    animation-name: ${zoom1};
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .category {
+    font-size: 12px;
+    font-weight: bold;
+    color: teal;
   }
 `;
 // background-color: ${({ isActive }) => (isActive ? "plum" : "bisque")};
@@ -93,7 +127,9 @@ const ToBuyBox = styled(BacklogBox)`
   background-color: plum;
 
   &: hover {
-    background-color: purple;
+    animation-name: ${zoom2};
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
   }
 `;
 
