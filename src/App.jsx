@@ -1,6 +1,6 @@
 import "./App.css";
-import { ItemList } from "./components/ItemList";
+import { ShoppingList } from "./components/shoppingList";
 
 export const App = () => {
-  return <ItemList />;
+  return <ShoppingList />;
 };

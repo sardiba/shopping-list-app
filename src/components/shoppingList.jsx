@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useLocalStorageState } from "../utils/localSotrage";
 import styled, { keyframes } from "styled-components";
+import { ShoppingListItem } from "./shoppingListItem";
 
 // see manual here : https://designcode.io/react-hooks-handbook-fetch-data-from-an-api
-export const ItemList = () => {
+export const ShoppingList = () => {
   const [backlog, setBacklog] = useLocalStorageState("backlog", []); // useState([]); default value is ein leeres Array []
   const [toBuy, setToBuy] = useLocalStorageState("tobuy", []);
   useEffect(() => {
@@ -48,27 +49,24 @@ export const ItemList = () => {
         <h2>Backlog</h2>
         <div>
           {backlog.map((item, index) => (
-            <BacklogBox
-              onClick={(event) => handleClickBacklog(event, item)}
-              key={`${item.id}_${index}`}
-            >
-              {" "}
-              {item.name}
-              <div className="category"> {item.category} </div>
+            <BacklogBox>
+              <ShoppingListItem
+                handleOnClick={handleClickBacklog}
+                item={item}
+                index={index}
+              />
             </BacklogBox>
           ))}
         </div>
         <h2>To Buy</h2>
         <div>
           {toBuy.map((item, index) => (
-            <ToBuyBox
-              // isActive={true}
-              onClick={(event) => handleClickToBuy(event, item)}
-              key={`${item.id}_${index}`}
-            >
-              {" "}
-              {item.name}
-              <div className="category"> {item.category} </div>
+            <ToBuyBox>
+              <ShoppingListItem
+                handleOnClick={handleClickToBuy}
+                item={item}
+                index={index}
+              />
             </ToBuyBox>
           ))}
         </div>
@@ -121,7 +119,6 @@ const BacklogBox = styled.span`
     color: teal;
   }
 `;
-// background-color: ${({ isActive }) => (isActive ? "plum" : "bisque")};
 
 const ToBuyBox = styled(BacklogBox)`
   background-color: plum;
