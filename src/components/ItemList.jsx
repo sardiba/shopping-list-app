@@ -81,11 +81,20 @@ const BacklogBox = styled.span`
   border-radius: 5px;
   padding: 10px;
   margin: 12px;
+
+  &: hover {
+    background-color: brown;
+    color: white;
+  }
 `;
 // background-color: ${({ isActive }) => (isActive ? "plum" : "bisque")};
 
 const ToBuyBox = styled(BacklogBox)`
   background-color: plum;
+
+  &: hover {
+    background-color: purple;
+  }
 `;
 
 const Div = styled.div`
