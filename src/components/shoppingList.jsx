@@ -108,7 +108,7 @@ const BacklogBox = styled.span`
   font-size: 17px;
   text-align: center;
 
-  &: hover {
+  &:hover {
     animation-name: ${zoom1};
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -123,7 +123,7 @@ const BacklogBox = styled.span`
 const ToBuyBox = styled(BacklogBox)`
   background-color: plum;
 
-  &: hover {
+  &:hover {
     animation-name: ${zoom2};
     animation-duration: 2s;
     animation-iteration-count: infinite;
