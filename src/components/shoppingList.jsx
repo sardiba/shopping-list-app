@@ -112,6 +112,7 @@ const BacklogBox = styled.span`
     animation-name: ${zoom1};
     animation-duration: 2s;
     animation-iteration-count: infinite;
+    cursor: grab;
   }
   .category {
     font-size: 12px;
